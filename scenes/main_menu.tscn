@@ -41,14 +41,13 @@ horizontal_alignment = 1
 [node name="StartButton" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Start Game"
+text = "BTN_START_GAME"
 script = ExtResource("2_yl8h1")
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Options"
+text = "BTN_OPTIONS"
 script = ExtResource("1_ickdo")
 
 [connection signal="pressed" from="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer/StartButton" method="_on_pressed"]
