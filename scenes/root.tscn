@@ -104,6 +104,7 @@ visible = false
 layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="HUD/Hud"]
+layout_mode = 0
 offset_right = 56.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 24

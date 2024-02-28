@@ -5,8 +5,8 @@ signal main_menu_clicked
 signal options_menu_opened
 signal options_menu_closed
 
-signal music_volume_changed(new_volume: int)
-signal sfx_volume_changed(new_volume: int)
+signal music_volume_changed(new_volume_linear: float)
+signal sfx_volume_changed(new_volume_linear: float)
 
 signal game_complete
 signal game_over
