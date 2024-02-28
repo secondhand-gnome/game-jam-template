@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm3lg5y3f16uw"]
+[gd_scene load_steps=5 format=3 uid="uid://dm3lg5y3f16uw"]
 
 [ext_resource type="Theme" uid="uid://brs5ivkfnyp4t" path="res://ui/menu_theme.tres" id="1_6daj4"]
 [ext_resource type="Script" path="res://ui/options_menu.gd" id="1_sas0r"]
+[ext_resource type="Script" path="res://ui/language_option_button.gd" id="3_ot4fv"]
 [ext_resource type="Script" path="res://ui/options_confirm_button.gd" id="3_rw5d8"]
 
 [node name="OptionsMenu" type="CenterContainer"]
@@ -48,11 +49,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
+[node name="Language Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "LABEL_LANGUAGE"
+
+[node name="LanguageOptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+script = ExtResource("3_ot4fv")
+
 [node name="OptionsConfirmButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "BTN_OPTIONS_CONFIRM"
+text = "BTN_OPTIONS_CLOSE"
 script = ExtResource("3_rw5d8")
 
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/SfxVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/LanguageOptionButton" to="PanelContainer/MarginContainer/VBoxContainer/GridContainer/LanguageOptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/OptionsConfirmButton" to="." method="_on_options_confirm_button_pressed"]
