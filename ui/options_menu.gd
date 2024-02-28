@@ -1,7 +1,6 @@
 class_name OptionsMenu extends Container
 
-# TODO - support Spanish by calling:
-    # TranslationServer.set_locale("es")
+# TranslationServer.set_locale("es")
 # TODO - Fix sound/music volume
 
 @onready var event_bus: EventBus = get_node("/root/G_EventBus")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bomevab2fybdd"]
+[gd_scene load_steps=11 format=3 uid="uid://bomevab2fybdd"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_g7wwn"]
 [ext_resource type="Texture2D" uid="uid://bjofdruag6xw8" path="res://icon.svg" id="1_uv2t2"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="2_7fnmw"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="4_7yuuk"]
 [ext_resource type="Theme" uid="uid://brs5ivkfnyp4t" path="res://ui/menu_theme.tres" id="4_352qe"]
 [ext_resource type="Script" path="res://ui/game_end_container.gd" id="8_bactu"]
 [ext_resource type="Script" path="res://ui/main_menu_button.gd" id="9_y8rgn"]
@@ -47,7 +48,15 @@ texture = ExtResource("1_uv2t2")
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+[node name="Hud" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_7yuuk")
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/Hud"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,55 +64,55 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_352qe")
 
-[node name="GameEndContainer" type="PanelContainer" parent="HUD/CenterContainer"]
+[node name="GameEndContainer" type="PanelContainer" parent="HUD/Hud/CenterContainer"]
 visible = false
 z_index = 4
 texture_filter = 2
 layout_mode = 2
 script = ExtResource("8_bactu")
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/CenterContainer/GameEndContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Hud/CenterContainer/GameEndContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/CenterContainer/GameEndContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Hud/CenterContainer/GameEndContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="GameWinLabel" type="Label" parent="HUD/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer"]
+[node name="GameWinLabel" type="Label" parent="HUD/Hud/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "You win!"
 horizontal_alignment = 1
 
-[node name="GameOverLabel" type="Label" parent="HUD/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer"]
+[node name="GameOverLabel" type="Label" parent="HUD/Hud/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "You lose!"
 horizontal_alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="HUD/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="HUD/Hud/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 script = ExtResource("9_y8rgn")
 
-[node name="PanelContainer" type="PanelContainer" parent="HUD/CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HUD/Hud/CenterContainer"]
 layout_mode = 2
 
-[node name="OptionsMenu" parent="HUD/CenterContainer/PanelContainer" instance=ExtResource("10_m3alh")]
+[node name="OptionsMenu" parent="HUD/Hud/CenterContainer/PanelContainer" instance=ExtResource("10_m3alh")]
 visible = false
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="HUD"]
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/Hud"]
 offset_right = 56.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 8
 
-[node name="OptionsButton" type="TextureButton" parent="HUD/MarginContainer2"]
+[node name="OptionsButton" type="TextureButton" parent="HUD/Hud/MarginContainer2"]
 layout_mode = 2
 texture_normal = ExtResource("11_0728j")
 script = ExtResource("12_ald3m")
 
-[connection signal="pressed" from="HUD/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer/MainMenuButton" to="HUD/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer/MainMenuButton" method="_on_pressed"]
-[connection signal="pressed" from="HUD/MarginContainer2/OptionsButton" to="HUD/MarginContainer2/OptionsButton" method="_on_pressed"]
+[connection signal="pressed" from="HUD/Hud/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer/MainMenuButton" to="HUD/Hud/CenterContainer/GameEndContainer/MarginContainer/VBoxContainer/MainMenuButton" method="_on_pressed"]
+[connection signal="pressed" from="HUD/Hud/MarginContainer2/OptionsButton" to="HUD/Hud/MarginContainer2/OptionsButton" method="_on_pressed"]
