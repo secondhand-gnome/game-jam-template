@@ -28,9 +28,9 @@ size_flags_horizontal = 3
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Music Volume Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-text = "Music"
+text = "LABEL_MUSIC_VOLUME"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -38,9 +38,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SFX Volume Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-text = "Sound"
+text = "LABEL_SFX_VOLUME"
 
 [node name="SfxVolumeSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -50,8 +50,7 @@ size_flags_vertical = 4
 
 [node name="OptionsConfirmButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Close
-"
+text = "BTN_OPTIONS_CONFIRM"
 script = ExtResource("3_rw5d8")
 
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]

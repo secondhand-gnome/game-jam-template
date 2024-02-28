@@ -1,3 +1,6 @@
 keys,en,es
 BTN_START_GAME,"Start Game","Comenzar"
 BTN_OPTIONS,"Options","Opciones"
+BTN_OPTIONS_CONFIRM,"Confirm","Confirmar"
+LABEL_MUSIC_VOLUME,"Music volume","Volumen de la música"
+LABEL_SFX_VOLUME,"Sound effects volume","Volumen de efectos de sonido"

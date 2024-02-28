@@ -1,16 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpft04oflprgm"]
 
 [ext_resource type="Script" path="res://ui/options_button.gd" id="1_ickdo"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_sfw8k"]
 [ext_resource type="Theme" uid="uid://brs5ivkfnyp4t" path="res://ui/menu_theme.tres" id="1_xnvlp"]
-[ext_resource type="PackedScene" uid="uid://dm3lg5y3f16uw" path="res://ui/options_menu.tscn" id="2_iptpv"]
 [ext_resource type="Script" path="res://ui/start_button.gd" id="2_yl8h1"]
 
 [node name="MainMenu" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sfw8k")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD"]
 texture_filter = 2
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,37 +28,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xnvlp")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
-layout_mode = 2
-
-[node name="OptionsMenu" parent="CanvasLayer/CenterContainer/PanelContainer" instance=ExtResource("2_iptpv")]
-visible = false
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD/CenterContainer"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 120
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD/CenterContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Game Title" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer"]
+[node name="Game Title" type="Label" parent="CanvasLayer/HUD/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Game Title"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="CanvasLayer/HUD/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "BTN_START_GAME"
 script = ExtResource("2_yl8h1")
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/HUD/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "BTN_OPTIONS"
 script = ExtResource("1_ickdo")
 
-[connection signal="pressed" from="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer/StartButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer/OptionsButton" to="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer/OptionsButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/HUD/CenterContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer/HUD/CenterContainer/MarginContainer/VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/HUD/CenterContainer/MarginContainer/VBoxContainer/OptionsButton" to="CanvasLayer/HUD/CenterContainer/MarginContainer/VBoxContainer/OptionsButton" method="_on_pressed"]
