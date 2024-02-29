@@ -57,20 +57,6 @@ text = "LABEL_LANGUAGE"
 layout_mode = 2
 script = ExtResource("3_8dp42")
 
-[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Credits"
-
-[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Third-party licenses"
-
 [node name="OptionsConfirmButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "BTN_OPTIONS_CLOSE"
