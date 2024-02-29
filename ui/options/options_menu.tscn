@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://brs5ivkfnyp4t" path="res://ui/menu_theme.tres" id="1_5epya"]
 [ext_resource type="Script" path="res://ui/options/options_menu.gd" id="2_0tqxl"]
-[ext_resource type="Script" path="res://ui/language_option_button.gd" id="3_08cxk"]
+[ext_resource type="Script" path="res://ui/options/language_option_button.gd" id="3_8dp42"]
 [ext_resource type="Script" path="res://ui/options/options_confirm_button.gd" id="4_a1cgu"]
 
 [node name="OptionsMenu" type="CenterContainer"]
@@ -55,7 +55,7 @@ text = "LABEL_LANGUAGE"
 
 [node name="LanguageOptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-script = ExtResource("3_08cxk")
+script = ExtResource("3_8dp42")
 
 [node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
