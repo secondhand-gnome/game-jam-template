@@ -1,6 +1,6 @@
 class_name Hud extends Control
 
-const R_OPTIONS_WINDOW: PackedScene = preload ("res://ui/options_window.tscn")
+const R_OPTIONS_WINDOW: PackedScene = preload ("res://ui/options/options_window.tscn")
 
 @onready var event_bus: EventBus = get_node("/root/G_EventBus")
 

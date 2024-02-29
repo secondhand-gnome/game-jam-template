@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dthrishy1lmqi"]
 
-[ext_resource type="PackedScene" uid="uid://dm3lg5y3f16uw" path="res://ui/options_menu.tscn" id="1_vbh3h"]
+[ext_resource type="PackedScene" uid="uid://dm3lg5y3f16uw" path="res://ui/options/options_menu.tscn" id="1_evnr7"]
 
 [node name="OptionsWindow" type="Window"]
 mode = 3
@@ -9,7 +9,7 @@ unresizable = true
 borderless = true
 popup_window = true
 
-[node name="OptionsMenu" parent="." instance=ExtResource("1_vbh3h")]
+[node name="OptionsMenu" parent="." instance=ExtResource("1_evnr7")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -17,9 +17,9 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 [autoload]
 
 G_EventBus="*res://core/event_bus.gd"
-G_Options="*res://core/options.gd"
 G_LevelManager="*res://core/level_manager.gd"
 G_GameManager="*res://core/game_manager.gd"
+G_Options="*res://core/options.gd"
 
 [display]
 
