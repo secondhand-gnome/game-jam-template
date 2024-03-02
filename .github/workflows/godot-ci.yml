@@ -35,5 +35,5 @@ jobs:
       - name: Compress Web Build
         uses: montudor/action-zip@v1.0.0
         with:
-          args: zip -qq -r "${EXPORT_NAME}-${GITHUB_REF_NAME}.zip" *
+          args: zip -qq -r "build/web/${EXPORT_NAME}-${GITHUB_REF_NAME}.zip" build/web/*
             
