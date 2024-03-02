@@ -47,8 +47,6 @@ jobs:
           zip -qq -r "../zip/${EXPORT_NAME}-${GITHUB_REF_NAME}.zip" *
       - name: Upload to GCP
         uses: google-github-actions/upload-cloud-storage@v2
-        env:
-          GCP_BUCKET_NAME: ${{ secrets.GCP_BUCKET_NAME }}
         with:
           path: "build/zip"
-          destination: "${GCP_BUCKET_NAME}"
+          destination: ${{ secrets.GCP_BUCKET_NAME }}
