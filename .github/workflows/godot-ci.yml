@@ -12,8 +12,11 @@ env:
 
 jobs:
   export-web:
-    name: Web Export
+    name: Web Export and Upload
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
     container:
       image: docker://barichello/godot-ci:4.2.1
     steps:
@@ -21,6 +24,12 @@ jobs:
         uses: actions/checkout@v2
         # with:
           # lfs: true
+      - name: GCP Auth
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          # service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
@@ -35,4 +44,10 @@ jobs:
         run: |
           cd build/web
           zip -qq -r "${EXPORT_NAME}-${GITHUB_REF_NAME}.zip" *
-            
+      - name: Upload to GCP
+        uses: google-github-actions/upload-cloud-storage@v2
+        env:
+          GCP_BUCKET_NAME: ${{ secrets.GCP_BUCKET_NAME }}
+        with:
+          path: "build/web/${EXPORT_NAME}-${GITHUB_REF_NAME}.zip"
+          destination: "${GCP_BUCKET_NAME}/${EXPORT_NAME}-${GITHUB_REF_NAME}.zip"
