@@ -1,4 +1,4 @@
-name: "godot-ci export"
+name: "tag-release export and upload"
 on:
   push:
     tags:
@@ -7,8 +7,8 @@ on:
 env:
   GODOT_VERSION: 4.2.1
   EXPORT_NAME: game-jam-template
-  # To get tag, use $GITHUB_REF_NAME
   PROJECT_PATH: game-jam-template
+  ENV_ITCH_GAME: 2hg-test
 
 jobs:
   export-web:
@@ -48,3 +48,32 @@ jobs:
         with:
           path: "build/zip"
           destination: ${{ secrets.GCP_BUCKET_NAME }}
+
+  upload-to-itch:
+    name: Upload Builds to Itch
+    needs: export-web
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        # with:
+          # lfs: true
+      - name: GCP Auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+      - name: Download Web Build from GCP
+        run: |
+          gcloud storage cp "gs://${{ secrets.GCP_BUCKET_NAME }}/zip/${EXPORT_NAME}-${GITHUB_REF_NAME}.zip" .
+      - name: Upload Web BUild to itch.io
+        uses: yeslayla/butler-publish-itchio-action@v1.0.3
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: html5-release
+          ITCH_GAME: $ENV_ITCH_GAME
+          ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
+          PACKAGE: ${EXPORT_NAME}-${GITHUB_REF_NAME}.zip
+          VERSION: $GITHUB_REF_NAME
