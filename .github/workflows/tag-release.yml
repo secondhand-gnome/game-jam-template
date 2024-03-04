@@ -8,6 +8,7 @@ env:
   GODOT_VERSION: 4.2.1
   EXPORT_NAME: game-jam-template
   PROJECT_PATH: game-jam-template
+  ITCH_GAME_TITLE: 2hg-test
 
 jobs:
   export-web:
@@ -70,7 +71,7 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: html5-release
-          ITCH_GAME: 2hg-test
+          ITCH_GAME: ${{ env.ITCH_GAME_TITLE }}
           ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
           PACKAGE: web.zip
-          VERSION: "$GITHUB_REF_NAME"
+          VERSION: ${{ github.ref_name }}
