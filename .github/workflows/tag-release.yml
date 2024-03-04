@@ -65,13 +65,13 @@ jobs:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
       - name: Download Web Build from GCP
         run: |
-          gcloud storage cp "gs://${{ secrets.GCP_BUCKET_NAME }}/zip/${EXPORT_NAME}-${GITHUB_REF_NAME}.zip" .
+          gcloud storage cp "gs://${{ secrets.GCP_BUCKET_NAME }}/zip/${EXPORT_NAME}-${GITHUB_REF_NAME}.zip" ./web.zip
       - name: Upload Web Build to itch.io
         uses: yeslayla/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: html5-release
-          ITCH_GAME: $ENV_ITCH_GAME
-          ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
-          PACKAGE: "$EXPORT_NAME-$GITHUB_REF_NAME.zip"
-          VERSION: $GITHUB_REF_NAME
+          ITCH_GAME: 2hg-test 
+          ITCH_USER: secondhandgnome
+          PACKAGE: web.zip
+          # VERSION: $GITHUB_REF_NAME
