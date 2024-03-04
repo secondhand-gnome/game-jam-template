@@ -71,7 +71,7 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: html5-release
-          ITCH_GAME: 2hg-test 
-          ITCH_USER: secondhandgnome
+          ITCH_GAME: "$ENV_ITCH_GAME"
+          ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
           PACKAGE: web.zip
-          # VERSION: $GITHUB_REF_NAME
+          VERSION: "$GITHUB_REF_NAME"
