@@ -8,7 +8,6 @@ env:
   GODOT_VERSION: 4.2.1
   EXPORT_NAME: game-jam-template
   PROJECT_PATH: game-jam-template
-  ENV_ITCH_GAME: 2hg-test
 
 jobs:
   export-web:
