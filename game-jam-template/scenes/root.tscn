@@ -1,44 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bomevab2fybdd"]
+[gd_scene load_steps=9 format=3 uid="uid://bomevab2fybdd"]
 
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_g7wwn"]
 [ext_resource type="Texture2D" uid="uid://bjofdruag6xw8" path="res://icon.svg" id="1_uv2t2"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="2_7fnmw"]
-[ext_resource type="Script" path="res://ui/hud.gd" id="4_7yuuk"]
+[ext_resource type="Script" uid="uid://cpv4ocoq0w87b" path="res://ui/hud.gd" id="4_7yuuk"]
 [ext_resource type="Theme" uid="uid://brs5ivkfnyp4t" path="res://ui/menu_theme.tres" id="4_352qe"]
 [ext_resource type="PackedScene" uid="uid://dm3lg5y3f16uw" path="res://ui/options/options_menu.tscn" id="8_a72t5"]
-[ext_resource type="Script" path="res://ui/game_end_container.gd" id="8_bactu"]
-[ext_resource type="Script" path="res://ui/main_menu_button.gd" id="9_y8rgn"]
-[ext_resource type="Script" path="res://ui/options/options_texture_button.gd" id="10_qyq4x"]
+[ext_resource type="Script" uid="uid://dctpcduberqt4" path="res://ui/game_end_container.gd" id="8_bactu"]
+[ext_resource type="Script" uid="uid://cc1abgnjnip5o" path="res://ui/main_menu_button.gd" id="9_y8rgn"]
+[ext_resource type="Script" uid="uid://p8jj47fq78lj" path="res://ui/options/options_texture_button.gd" id="10_qyq4x"]
 [ext_resource type="Texture2D" uid="uid://hpe2ultf3qmi" path="res://assets/gear.png" id="11_0728j"]
 
 [node name="Root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("1_g7wwn")
-
-[node name="PhantomCamera2D" type="Node2D" parent="."]
-script = ExtResource("2_7fnmw")
-priority_override = false
-priority = 0
-zoom = Vector2(1, 1)
-follow_mode = 2
-follow_target = NodePath("../ExampleCharacter")
-follow_parameters/target_offset = Vector2(0, 0)
-follow_parameters/damping = false
-frame_preview = true
-pixel_perfect = false
-limit/draw_limits = false
-limit/left = -10000000
-limit/top = -10000000
-limit/right = 10000000
-limit/bottom = 10000000
-limit/limit_node_target = NodePath("")
-limit/smoothed = false
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
 
 [node name="ExampleCharacter" type="Node2D" parent="."]
 

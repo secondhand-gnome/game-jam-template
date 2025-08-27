@@ -4,4 +4,4 @@ Game Jam Template
 
 ## Third Party Assets
 * [Gear icon](https://opengameart.org/content/game-icons) by [Kenney](https://www.kenney.nl/)
-* [Phantom Camera](https://github.com/ramokz/phantom-camera) by [ramokz](https://github.com/ramokz/)
+* [G.U.I.D.E.](https://godotneers.github.io/G.U.I.D.E/) by [Godotneers](https://www.youtube.com/@godotneers)
