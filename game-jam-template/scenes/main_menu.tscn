@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpft04oflprgm"]
 
-[ext_resource type="Script" path="res://ui/hud.gd" id="1_sfw8k"]
+[ext_resource type="Script" uid="uid://cpv4ocoq0w87b" path="res://ui/hud.gd" id="1_sfw8k"]
 [ext_resource type="Theme" uid="uid://brs5ivkfnyp4t" path="res://ui/menu_theme.tres" id="1_xnvlp"]
-[ext_resource type="Script" path="res://ui/start_button.gd" id="2_yl8h1"]
-[ext_resource type="Script" path="res://ui/options/options_button.gd" id="4_c1hc7"]
+[ext_resource type="Script" uid="uid://phn522kc8afc" path="res://ui/start_button.gd" id="2_yl8h1"]
+[ext_resource type="Script" uid="uid://dli6t08go8mf3" path="res://ui/options/options_button.gd" id="4_c1hc7"]
 
 [node name="MainMenu" type="Node2D"]
 
