@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://bee3cdt6vqyqn"]
+
+[ext_resource type="Script" uid="uid://dlu3x2xah1y0e" path="res://scenes/input_init.gd" id="1_5i0tg"]
+[ext_resource type="Script" uid="uid://sfltbsghnchb" path="res://scenes/example_character.gd" id="1_kelw5"]
+[ext_resource type="Resource" uid="uid://c8c3505a8aphk" path="res://input/guide_mapping_context.tres" id="2_bdhmt"]
+[ext_resource type="Resource" uid="uid://d2ksoniyq6tcr" path="res://input/actions/move_guide_action.tres" id="2_lfrn8"]
+[ext_resource type="Resource" uid="uid://cwtm1dp83ks3v" path="res://input/actions/say_hi_guide_action.tres" id="3_5i0tg"]
+[ext_resource type="Texture2D" uid="uid://bjofdruag6xw8" path="res://icon.svg" id="4_bdhmt"]
+
+[node name="Game" type="Node2D"]
+
+[node name="InputInit" type="Node" parent="."]
+script = ExtResource("1_5i0tg")
+mapping_context = ExtResource("2_bdhmt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ExampleCharacter" type="Node2D" parent="."]
+script = ExtResource("1_kelw5")
+move_action = ExtResource("2_lfrn8")
+say_hi_action = ExtResource("3_5i0tg")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExampleCharacter"]
+texture = ExtResource("4_bdhmt")

@@ -11,7 +11,7 @@ func _ready():
 	sfx_volume_slider.set_value_no_signal(options.sfx_volume_linear * 100.0)
 
 func _on_options_confirm_button_pressed():
-	event_bus.options_menu_closed.emit()
+	hide()
 
 func _on_music_volume_slider_value_changed(value: int):
 	var linear_volume = float(value) / 100.0
@@ -20,3 +20,6 @@ func _on_music_volume_slider_value_changed(value: int):
 func _on_sfx_volume_slider_value_changed(value: int):
 	var linear_volume = float(value) / 100.0
 	event_bus.sfx_volume_changed.emit(linear_volume)
+
+func _on_options_button_pressed():
+	show()

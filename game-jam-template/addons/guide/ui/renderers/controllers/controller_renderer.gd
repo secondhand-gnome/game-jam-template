@@ -52,48 +52,48 @@ extends GUIDEIconRenderer
 
 func _ready():
 	super()
-	_a_button.texture = a_button 
-	_b_button.texture = b_button 
-	_x_button.texture = x_button 
-	_y_button.texture = y_button 
-	_left_stick.texture = left_stick 
-	_left_stick_click.texture = left_stick_click 
-	_right_stick.texture = right_stick 
-	_right_stick_click.texture = right_stick_click 
-	_left_bumper.texture = left_bumper 
-	_right_bumper.texture = right_bumper 
-	_left_trigger.texture = left_trigger 
-	_right_trigger.texture = right_trigger 
-	_dpad_up.texture = dpad_up 
-	_dpad_left.texture = dpad_left 
-	_dpad_right.texture = dpad_right 
-	_dpad_down.texture = dpad_down 
-	_start.texture = start 
-	_misc1.texture = misc1 
-	_back.texture = back 
+	_a_button.texture = a_button
+	_b_button.texture = b_button
+	_x_button.texture = x_button
+	_y_button.texture = y_button
+	_left_stick.texture = left_stick
+	_left_stick_click.texture = left_stick_click
+	_right_stick.texture = right_stick
+	_right_stick_click.texture = right_stick_click
+	_left_bumper.texture = left_bumper
+	_right_bumper.texture = right_bumper
+	_left_trigger.texture = left_trigger
+	_right_trigger.texture = right_trigger
+	_dpad_up.texture = dpad_up
+	_dpad_left.texture = dpad_left
+	_dpad_right.texture = dpad_right
+	_dpad_down.texture = dpad_down
+	_start.texture = start
+	_misc1.texture = misc1
+	_back.texture = back
 	_touch_pad.texture = touch_pad
 
 func supports(input:GUIDEInput) -> bool:
 	var joy_name = GUIDEInputFormatter._joy_name_for_input(input)
 	if joy_name == "":
 		return false
-	
-	# Look if the controller name matches one of the supported ones	
+
+	# Look if the controller name matches one of the supported ones
 	var haystack = joy_name.to_lower()
 	for needle in controller_name_matches:
 		if haystack.contains(needle.to_lower()):
-			return true 	
-	
+			return true
+
 	return false
-	
+
 func render(input:GUIDEInput) -> void:
 	for control in _controls.get_children():
 		control.visible = false
 	for direction in _directions.get_children():
 		direction.visible = false
 	_directions.visible = false
-		
-	
+
+
 	if input is GUIDEInputJoyAxis1D:
 		match input.axis:
 			JOY_AXIS_LEFT_X:
@@ -112,17 +112,17 @@ func render(input:GUIDEInput) -> void:
 				_left_trigger.visible = true
 			JOY_AXIS_TRIGGER_RIGHT:
 				_right_trigger.visible = true
-	
+
 	if input is GUIDEInputJoyAxis2D:
 		# We assume that there is no input mixing horizontal and vertical
-		# from different sticks into a 2D axis as this would confuse the 
-		# players. 
+		# from different sticks into a 2D axis as this would confuse the
+		# players.
 		match input.x:
 			JOY_AXIS_LEFT_X, JOY_AXIS_LEFT_Y:
 				_left_stick.visible = true
 			JOY_AXIS_RIGHT_X, JOY_AXIS_RIGHT_Y:
 				_right_stick.visible = true
-				
+
 	if input is GUIDEInputJoyButton:
 		match input.button:
 			JOY_BUTTON_A:
@@ -159,9 +159,9 @@ func render(input:GUIDEInput) -> void:
 				_misc1.visible = true
 			JOY_BUTTON_TOUCHPAD:
 				_touch_pad.visible = true
-					
-	call("queue_sort")		
-				 								
+
+	call("queue_sort")
+
 
 func _show_left_right():
 	_directions.visible = true
@@ -170,7 +170,7 @@ func _show_left_right():
 func _show_up_down():
 	_directions.visible = true
 	_up_down.visible = true
-	
- 
+
+
 func cache_key(input:GUIDEInput) -> String:
 	return "7581f483-bc68-411f-98ad-dc246fd2593a" + input.to_string() + GUIDEInputFormatter._joy_name_for_input(input)
