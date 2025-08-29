@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://wrp6jua7q6yq"]
+
+[ext_resource type="PackedScene" uid="uid://c6xx2q5rxpcx7" path="res://ui/options/controls/control_row.tscn" id="1_vnycw"]
+
+[node name="ControlsContainer" type="VBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="ControlRow" parent="." instance=ExtResource("1_vnycw")]
+layout_mode = 2

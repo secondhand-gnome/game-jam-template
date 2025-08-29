@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://ckggy40lm0vjc" path="res://addons/guide/modifiers/guide_modifier_negate.gd" id="6_uqq3x"]
 [ext_resource type="Script" uid="uid://bm5gjgadon6hb" path="res://addons/guide/modifiers/guide_modifier_input_swizzle.gd" id="7_m3m7p"]
 [ext_resource type="Script" uid="uid://x74mnwgr08a7" path="res://addons/guide/triggers/guide_trigger.gd" id="8_sw875"]
-[ext_resource type="Resource" uid="uid://cwtm1dp83ks3v" path="res://input/actions/say_hi_guide_action.tres" id="9_onr6o"]
+[ext_resource type="Resource" uid="uid://cwtm1dp83ks3v" path="res://input/actions/control_1_guide_action.tres" id="9_onr6o"]
 [ext_resource type="Script" uid="uid://b52rqq28tuqpg" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="10_2xpsm"]
 
 [sub_resource type="Resource" id="Resource_owaiy"]

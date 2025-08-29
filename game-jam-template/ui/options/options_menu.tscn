@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm3lg5y3f16uw"]
+[gd_scene load_steps=6 format=3 uid="uid://dm3lg5y3f16uw"]
 
 [ext_resource type="Theme" uid="uid://brs5ivkfnyp4t" path="res://ui/menu_theme.tres" id="1_5epya"]
 [ext_resource type="Script" uid="uid://bw3avgj281q3" path="res://ui/options/options_menu.gd" id="2_0tqxl"]
 [ext_resource type="Script" uid="uid://curg0epbma6ae" path="res://ui/options/language_option_button.gd" id="3_8dp42"]
 [ext_resource type="Script" uid="uid://dxtiyf75rodbe" path="res://ui/options/options_confirm_button.gd" id="4_a1cgu"]
-[ext_resource type="Script" uid="uid://dlapaur7qm0ks" path="res://ui/options/controls_grid_item.gd" id="4_xewkt"]
-[ext_resource type="Resource" uid="uid://cwtm1dp83ks3v" path="res://input/actions/say_hi_guide_action.tres" id="5_882kb"]
+[ext_resource type="PackedScene" uid="uid://wrp6jua7q6yq" path="res://ui/options/controls/controls_container.tscn" id="4_xewkt"]
 
 [node name="OptionsMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -59,23 +58,8 @@ text = "LABEL_LANGUAGE"
 layout_mode = 2
 script = ExtResource("3_8dp42")
 
-[node name="ControlsGridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ControlsContainer" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_xewkt")]
 layout_mode = 2
-columns = 2
-
-[node name="Control 1 Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ControlsGridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Control 1"
-
-[node name="Control1Icon" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ControlsGridContainer"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-bbcode_enabled = true
-text = "???"
-horizontal_alignment = 1
-script = ExtResource("4_xewkt")
-guide_action = ExtResource("5_882kb")
 
 [node name="OptionsConfirmButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
