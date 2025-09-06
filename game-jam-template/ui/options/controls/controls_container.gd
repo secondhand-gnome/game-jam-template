@@ -7,6 +7,7 @@ var _formatter:GUIDEInputFormatter = GUIDEInputFormatter.new(ICON_SIZE_PX)
 
 @onready var _control_list: Container = %ControlList
 @onready var _input_detector: GUIDEInputDetector = %GUIDEInputDetector
+@onready var _status_label: RichTextLabel = %StatusLabel
 
 func _ready():
 	_build_interface()
@@ -46,7 +47,6 @@ func _build_interface():
 		var remap_button := Button.new()
 		remap_button.text = tr("BTN_CONTROL_REMAP")
 		remap_button.pressed.connect(func():
-			# TODO show in ui (mention ESC to cancel)
 			_rebind(item)
 		)
 		row_container.add_child(remap_button)
@@ -63,7 +63,7 @@ func _apply_input(input: GUIDEInput, label: RichTextLabel):
 		label.parse_bbcode("[color=gray]%s[/color]" % tr("LABEL_CONTROL_UNASSIGNED"))
 		return
 
-	var icon:String = await _formatter.input_as_richtext_async(input)
+	var icon: String = await _formatter.input_as_richtext_async(input)
 	label.parse_bbcode(icon)
 
 func _rebind(item: GUIDERemapper.ConfigItem):
@@ -72,7 +72,15 @@ func _rebind(item: GUIDERemapper.ConfigItem):
 	# Detect BOOL only, instead of trying to use axis (item.value_type)
 	_input_detector.detect(GUIDEAction.GUIDEActionValueType.BOOL)
 
+	# Show "Esc to cancel"
+	var abort_detection_input: GUIDEInput = _input_detector.abort_detection_on[0]
+	var abort_icon: String = await _formatter.input_as_richtext_async(abort_detection_input)
+	var status_message: String = tr("STATUS_CONTROL_ABORT").replace(":?", abort_icon)
+	_status_label.parse_bbcode(status_message)
+
 	var input: GUIDEInput = await _input_detector.input_detected
+	_status_label.clear()
+
 	print("Reassigning GUIDE action %s" % _item_name(item))
 	if input != null:
 		remapper.set_bound_input(item, input)

@@ -7,10 +7,11 @@ BTN_CONTROL_REMAP,"Remap","Ajustar"
 CONTROL_MOVE,"Move","Mover"
 CONTROL_MOVE_UP,"Move up","Arriba"
 CONTROL_MOVE_DOWN,"Move down","Baja"
-CONTROL_MOVE_LEFT,"Move left","Izquierda",
+CONTROL_MOVE_LEFT,"Move left","Izquierda"
 CONTROL_MOVE_RIGHT,"Move right","Derecha"
 LABEL_MUSIC_VOLUME,"Music volume","Volumen de la música"
 LABEL_SFX_VOLUME,"Sound effects volume","Volumen de efectos de sonido"
-LABEL_CONTROL_UNASSIGNED,"Unassigned","Sin asignar
+LABEL_CONTROL_UNASSIGNED,"Unassigned","Sin asignar"
 LABEL_CONTROLS,"Controls","Controles"
 LABEL_LANGUAGE,"Language","Idioma"
+STATUS_CONTROL_ABORT,":? to cancel",":? para cancelar"
