@@ -1,3 +1,8 @@
-[gd_resource type="Theme" format=3 uid="uid://brs5ivkfnyp4t"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://brs5ivkfnyp4t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iao85"]
+bg_color = Color(0.6575551, 0.57926273, 0.57484794, 1)
 
 [resource]
+HighlightedPanelContainer/base_type = &"PanelContainer"
+HighlightedPanelContainer/styles/panel = SubResource("StyleBoxFlat_iao85")

@@ -3,19 +3,13 @@
 [ext_resource type="Script" uid="uid://3tp8s3rjn21r" path="res://ui/options/controls/control_row.gd" id="1_f6j0d"]
 [ext_resource type="Resource" uid="uid://cwtm1dp83ks3v" path="res://input/actions/control_1_guide_action.tres" id="2_p3yoa"]
 
-[node name="ControlRow" type="HBoxContainer"]
+[node name="ControlRow" type="Button"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 60)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Control 1 - A"
 script = ExtResource("1_f6j0d")
 guide_action = ExtResource("2_p3yoa")
 
-[node name="ControlLabel" type="Label" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Control 1"
-horizontal_alignment = 2
-
-[node name="ControlIcon" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(120, 40)
-layout_mode = 2
-size_flags_horizontal = 8
-bbcode_enabled = true
-horizontal_alignment = 1
+[connection signal="pressed" from="." to="." method="_on_pressed"]
