@@ -1,7 +1,44 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6xx2q5rxpcx7"]
 
-[ext_resource type="Script" uid="uid://3tp8s3rjn21r" path="res://ui/options/controls/control_row.gd" id="1_f6j0d"]
 [ext_resource type="Resource" uid="uid://cwtm1dp83ks3v" path="res://input/actions/control_1_guide_action.tres" id="2_p3yoa"]
+
+[sub_resource type="GDScript" id="GDScript_t5per"]
+script/source = "@tool
+extends Button
+
+@export var guide_action: GUIDEAction
+
+@onready var _is_remapping: bool = false
+
+@onready var _formatter: GUIDEInputFormatter = \\
+	GUIDEInputFormatter.for_active_contexts()
+
+func _ready():
+	text = guide_action.display_name
+
+	if not Engine.is_editor_hint():
+		GUIDE.input_mappings_changed.connect(_on_input_mappings_changed)
+		_on_input_mappings_changed()
+
+func _input(event):
+	if not _is_remapping:
+		return
+
+	# TODO filter only to valid types of input
+	if event.is_pressed():
+		print(\"Mapping %s to %s\" % [guide_action.display_name, event])
+		_is_remapping = false
+
+func _on_input_mappings_changed():
+	var action_text := _formatter.action_as_text(guide_action)
+	text = \"%s - %s\" % [guide_action.display_name, action_text]
+
+func _on_pressed():
+	if _is_remapping:
+		return
+	print(\"Remapping input %s\" % guide_action.display_name)
+	_is_remapping = true
+"
 
 [node name="ControlRow" type="Button"]
 clip_contents = true
@@ -9,7 +46,7 @@ custom_minimum_size = Vector2(200, 60)
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Control 1 - A"
-script = ExtResource("1_f6j0d")
+script = SubResource("GDScript_t5per")
 guide_action = ExtResource("2_p3yoa")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

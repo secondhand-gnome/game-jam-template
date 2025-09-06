@@ -25,7 +25,7 @@ script = ExtResource("7_m3m7p")
 [sub_resource type="Resource" id="Resource_mitxp"]
 script = ExtResource("3_uatrn")
 is_remappable = true
-display_name = "Move Up"
+display_name = "CONTROL_MOVE_UP"
 display_category = "Movement"
 input = SubResource("Resource_owaiy")
 modifiers = Array[ExtResource("5_2xpsm")]([SubResource("Resource_kpiu1"), SubResource("Resource_sdvo2")])
@@ -40,7 +40,7 @@ script = ExtResource("7_m3m7p")
 [sub_resource type="Resource" id="Resource_5w2qv"]
 script = ExtResource("3_uatrn")
 is_remappable = true
-display_name = "Move Down"
+display_name = "CONTROL_MOVE_DOWN"
 display_category = "Movement"
 input = SubResource("Resource_6lmc7")
 modifiers = Array[ExtResource("5_2xpsm")]([SubResource("Resource_k2hci")])
@@ -55,7 +55,7 @@ script = ExtResource("6_uqq3x")
 [sub_resource type="Resource" id="Resource_u75dq"]
 script = ExtResource("3_uatrn")
 is_remappable = true
-display_name = "Move Left"
+display_name = "CONTROL_MOVE_LEFT"
 display_category = "Movement"
 input = SubResource("Resource_6firh")
 modifiers = Array[ExtResource("5_2xpsm")]([SubResource("Resource_nyemy")])
@@ -67,7 +67,7 @@ key = 68
 [sub_resource type="Resource" id="Resource_nr5r6"]
 script = ExtResource("3_uatrn")
 is_remappable = true
-display_name = "Move Right"
+display_name = "CONTROL_MOVE_RIGHT"
 display_category = "Movement"
 input = SubResource("Resource_w2lyb")
 

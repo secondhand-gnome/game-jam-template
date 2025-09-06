@@ -11,6 +11,12 @@ var _formatter:GUIDEInputFormatter = GUIDEInputFormatter.new(ICON_SIZE_PX)
 func _ready():
 	_build_interface()
 
+func _item_name(item: GUIDERemapper.ConfigItem) -> String:
+	if item._input_mapping.display_name != "":
+		return tr(item._input_mapping.display_name)
+	else:
+		return tr(item.display_name)
+
 func _build_interface():
 	var remapper := input_manager.get_remapper()
 	# get all items
@@ -24,14 +30,8 @@ func _build_interface():
 		var row_container := HBoxContainer.new()
 		_control_list.add_child(row_container)
 
-		var display_name: String
-		if item._input_mapping.display_name != "":
-			display_name = item._input_mapping.display_name
-		else:
-			display_name = item.display_name
-
 		var name_label: Label = Label.new()
-		name_label.text = display_name
+		name_label.text = _item_name(item)
 		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row_container.add_child(name_label)
 
@@ -45,15 +45,41 @@ func _build_interface():
 
 		var remap_button := Button.new()
 		remap_button.text = tr("BTN_CONTROL_REMAP")
+		remap_button.pressed.connect(func():
+			# TODO show in ui (mention ESC to cancel)
+			_rebind(item)
+		)
 		row_container.add_child(remap_button)
+
+		var restore_default_button := Button.new()
+		restore_default_button.text = tr("BTN_CONTROL_DEFAULT")
+		restore_default_button.pressed.connect(func():
+			_restore_default(item)
+		)
+		row_container.add_child(restore_default_button)
 
 func _apply_input(input: GUIDEInput, label: RichTextLabel):
 	if input == null:
-		label.parse_bbcode("[color=gray]Not bound[/color]")
+		label.parse_bbcode("[color=gray]%s[/color]" % tr("LABEL_CONTROL_UNASSIGNED"))
 		return
 
 	var icon:String = await _formatter.input_as_richtext_async(input)
 	label.parse_bbcode(icon)
 
 func _rebind(item: GUIDERemapper.ConfigItem):
-	_input_detector.detect(item.value_type)
+	var remapper := input_manager.get_remapper()
+
+	# Detect BOOL only, instead of trying to use axis (item.value_type)
+	_input_detector.detect(GUIDEAction.GUIDEActionValueType.BOOL)
+
+	var input: GUIDEInput = await _input_detector.input_detected
+	print("Reassigning GUIDE action %s" % _item_name(item))
+	if input != null:
+		remapper.set_bound_input(item, input)
+		print("Set action %s to %s" % [_item_name(item), input])
+		# TODO handle collisions
+
+func _restore_default(item: GUIDERemapper.ConfigItem):
+	var remapper := input_manager.get_remapper()
+	print("Restoring default GUIDE action for %s" % _item_name(item))
+	remapper.restore_default_for(item)

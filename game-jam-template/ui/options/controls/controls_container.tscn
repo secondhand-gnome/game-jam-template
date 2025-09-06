@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://wrp6jua7q6yq"]
+[gd_scene load_steps=6 format=3 uid="uid://wrp6jua7q6yq"]
 
 [ext_resource type="Script" uid="uid://cp7ucdcgonv5i" path="res://ui/options/controls/controls_container.gd" id="1_bvlu1"]
 [ext_resource type="Script" uid="uid://db27ccgomq455" path="res://addons/guide/remapping/guide_input_detector.gd" id="2_bvlu1"]
+[ext_resource type="Script" uid="uid://ccvqqvfooyvn0" path="res://addons/guide/inputs/guide_input.gd" id="3_qa35j"]
+[ext_resource type="Script" uid="uid://cw71o87tvdx3q" path="res://addons/guide/inputs/guide_input_key.gd" id="4_hdly8"]
+
+[sub_resource type="Resource" id="Resource_vfk7m"]
+script = ExtResource("4_hdly8")
+key = 4194305
+metadata/_custom_type_script = "uid://cw71o87tvdx3q"
 
 [node name="ControlsContainer" type="Control"]
 layout_mode = 3
@@ -14,6 +21,7 @@ script = ExtResource("1_bvlu1")
 [node name="GUIDEInputDetector" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_bvlu1")
+abort_detection_on = Array[ExtResource("3_qa35j")]([SubResource("Resource_vfk7m")])
 metadata/_custom_type_script = "uid://db27ccgomq455"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
