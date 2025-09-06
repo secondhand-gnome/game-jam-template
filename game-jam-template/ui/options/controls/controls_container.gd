@@ -87,11 +87,19 @@ func _rebind(item: GUIDERemapper.ConfigItem):
 
 	print("Reassigning GUIDE action %s" % _item_name(item))
 	if input != null:
-		remapper.set_bound_input(item, input)
-		print("Set action %s to %s" % [_item_name(item), input])
-		# TODO handle collisions
+		_bind(item, input)
+
+func _bind(item: GUIDERemapper.ConfigItem, input: GUIDEInput):
+	# TODO for some reason, this gets finicky if we're using defaults and switch to some non-default
+	var remapper := input_manager.get_remapper()
+	remapper.set_bound_input(item, input)
+	print("Set action %s to %s" % [_item_name(item), input])
+	# TODO handle collisions
+	input_manager.save_remaps()
 
 func _restore_default(item: GUIDERemapper.ConfigItem):
 	var remapper := input_manager.get_remapper()
 	print("Restoring default GUIDE action for %s" % _item_name(item))
-	remapper.restore_default_for(item)
+	#remapper.restore_default_for(item)
+	var default_input := remapper.get_default_input(item)
+	_bind(item, default_input)

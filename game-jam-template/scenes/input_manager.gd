@@ -21,6 +21,10 @@ func _ready():
 	var mapping_contexts: Array[GUIDEMappingContext] = [mapping_context]
 	_remapper.initialize(mapping_contexts, remapping_config)
 
-
 func get_remapper() -> GUIDERemapper:
 	return _remapper
+
+func save_remaps():
+	var new_remapping_config: GUIDERemappingConfig = _remapper.get_mapping_config()
+	ResourceSaver.save(new_remapping_config, REMAPPING_CONFIG_PATH)
+	GUIDE.set_remapping_config(new_remapping_config)
