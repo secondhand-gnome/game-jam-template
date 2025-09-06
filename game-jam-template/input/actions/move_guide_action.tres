@@ -5,4 +5,7 @@
 [resource]
 script = ExtResource("1_rikx7")
 action_value_type = 2
+is_remappable = true
+display_name = "Move"
+display_category = "Movement"
 metadata/_custom_type_script = "uid://cluhc11vixkf1"

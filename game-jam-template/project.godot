@@ -21,6 +21,11 @@ G_LevelManager="*res://core/level_manager.gd"
 G_GameManager="*res://core/game_manager.gd"
 G_Options="*res://core/options.gd"
 GUIDE="*res://addons/guide/guide.gd"
+G_InputManager="*res://scenes/input_manager.gd"
+
+[debug]
+
+settings/stdout/verbose_stdout=true
 
 [display]
 
