@@ -59,6 +59,7 @@ layout_mode = 2
 script = ExtResource("3_8dp42")
 
 [node name="ControlsContainer" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_xewkt")]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
 [node name="OptionsConfirmButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]

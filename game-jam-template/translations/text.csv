@@ -2,6 +2,8 @@ keys,en,es
 BTN_START_GAME,"Start Game","Comenzar"
 BTN_OPTIONS,"Options","Opciones"
 BTN_OPTIONS_CLOSE,"Close","Cerrar"
+BTN_CONTROL_REMAP,"Remap","Ajustar"
 LABEL_MUSIC_VOLUME,"Music volume","Volumen de la música"
 LABEL_SFX_VOLUME,"Sound effects volume","Volumen de efectos de sonido"
+LABEL_CONTROLS,"Controls","Controles"
 LABEL_LANGUAGE,"Language","Idioma"
