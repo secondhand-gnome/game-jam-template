@@ -16,6 +16,7 @@ theme = ExtResource("1_5epya")
 script = ExtResource("2_0tqxl")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(800, 600)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
@@ -32,7 +33,9 @@ columns = 2
 
 [node name="Music Volume Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "LABEL_MUSIC_VOLUME"
+horizontal_alignment = 2
 
 [node name="MusicVolumeSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -42,7 +45,9 @@ size_flags_vertical = 4
 
 [node name="SFX Volume Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "LABEL_SFX_VOLUME"
+horizontal_alignment = 2
 
 [node name="SfxVolumeSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -52,7 +57,9 @@ size_flags_vertical = 4
 
 [node name="Language Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "LABEL_LANGUAGE"
+horizontal_alignment = 2
 
 [node name="LanguageOptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -61,6 +68,7 @@ script = ExtResource("3_8dp42")
 [node name="ControlsContainer" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_xewkt")]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="OptionsConfirmButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

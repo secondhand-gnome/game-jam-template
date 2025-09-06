@@ -1,7 +1,8 @@
 extends Control
 
 const ICON_SIZE_PX: int = 48
-var _formatter:GUIDEInputFormatter = GUIDEInputFormatter.new(ICON_SIZE_PX)
+const ICON_SIZE_PX_LONG: int = 200
+var _formatter: GUIDEInputFormatter = GUIDEInputFormatter.new(ICON_SIZE_PX)
 
 @onready var input_manager: InputManager = get_node("/root/G_InputManager")
 
@@ -14,9 +15,9 @@ func _ready():
 
 func _item_name(item: GUIDERemapper.ConfigItem) -> String:
 	if item._input_mapping.display_name != "":
-		return tr(item._input_mapping.display_name)
+		return item._input_mapping.display_name
 	else:
-		return tr(item.display_name)
+		return item.display_name
 
 func _build_interface():
 	var remapper := input_manager.get_remapper()
@@ -38,21 +39,24 @@ func _build_interface():
 
 		var label: RichTextLabel = RichTextLabel.new()
 		label.bbcode_enabled = true
-		label.custom_minimum_size = Vector2(ICON_SIZE_PX, ICON_SIZE_PX)
+		label.fit_content = true
+		label.scroll_active = false
+		label.custom_minimum_size = Vector2(ICON_SIZE_PX_LONG, ICON_SIZE_PX)
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		row_container.add_child(label)
 
 		_apply_input(current_input, label)
 		item.changed.connect(_apply_input.bind(label))
 
 		var remap_button := Button.new()
-		remap_button.text = tr("BTN_CONTROL_REMAP")
+		remap_button.text = "BTN_CONTROL_REMAP"
 		remap_button.pressed.connect(func():
 			_rebind(item)
 		)
 		row_container.add_child(remap_button)
 
 		var restore_default_button := Button.new()
-		restore_default_button.text = tr("BTN_CONTROL_DEFAULT")
+		restore_default_button.text = "BTN_CONTROL_DEFAULT"
 		restore_default_button.pressed.connect(func():
 			_restore_default(item)
 		)
