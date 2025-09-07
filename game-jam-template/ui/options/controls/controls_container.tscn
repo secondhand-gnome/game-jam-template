@@ -32,6 +32,7 @@ offset_bottom = 404.0
 grow_horizontal = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+clip_contents = false
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3
@@ -52,9 +53,9 @@ horizontal_alignment = 1
 
 [node name="StatusLabel" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
 bbcode_enabled = true
 text = "??"
 horizontal_alignment = 1

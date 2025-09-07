@@ -83,11 +83,12 @@ func _rebind(item: GUIDERemapper.ConfigItem):
 	_status_label.parse_bbcode(status_message)
 
 	var input: GUIDEInput = await _input_detector.input_detected
-	_status_label.clear()
-
 	print("Reassigning GUIDE action %s" % _item_name(item))
 	if input != null:
 		_bind(item, input)
+		_status_label.parse_bbcode("Changes will apply after game reset")
+	else:
+		_status_label.clear()
 
 func _bind(item: GUIDERemapper.ConfigItem, input: GUIDEInput):
 	# TODO for some reason, this gets finicky if we're using defaults and switch to some non-default
@@ -100,6 +101,5 @@ func _bind(item: GUIDERemapper.ConfigItem, input: GUIDEInput):
 func _restore_default(item: GUIDERemapper.ConfigItem):
 	var remapper := input_manager.get_remapper()
 	print("Restoring default GUIDE action for %s" % _item_name(item))
-	#remapper.restore_default_for(item)
 	var default_input := remapper.get_default_input(item)
 	_bind(item, default_input)
